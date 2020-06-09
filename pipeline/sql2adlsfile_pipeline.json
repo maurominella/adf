@@ -1,7 +1,7 @@
 {
 	"name": "sql2adlsfile_pipeline",
 	"properties": {
-		"description": "test",
+		"description": "sql2adlsfile_pipeline",
 		"activities": [
 			{
 				"name": "copydata_activity",

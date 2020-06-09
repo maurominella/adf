@@ -1,0 +1,24 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "mmadf01"
+		},
+		"adls2_linked_service_accountKey": {
+			"value": ""
+		},
+		"sql_linked_service_connectionString": {
+			"value": ""
+		},
+		"adls2_linked_service_properties_typeProperties_url": {
+			"value": "https://mauromiadlgen2hierarchy.dfs.core.windows.net"
+		},
+		"containerUri": {
+			"value": ""
+		},
+		"containerSasToken": {
+			"value": ""
+		}
+	}
+}

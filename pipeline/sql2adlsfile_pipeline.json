@@ -1,0 +1,227 @@
+{
+	"name": "sql2adlsfile_pipeline",
+	"properties": {
+		"activities": [
+			{
+				"name": "copydata_activity",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzureSqlSource",
+						"queryTimeout": "02:00:00"
+					},
+					"sink": {
+						"type": "DelimitedTextSink",
+						"storeSettings": {
+							"type": "AzureBlobFSWriteSettings"
+						},
+						"formatSettings": {
+							"type": "DelimitedTextWriteSettings",
+							"quoteAllText": true,
+							"fileExtension": ".txt"
+						}
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "ProductID",
+									"type": "Int32"
+								},
+								"sink": {
+									"type": "Int32",
+									"ordinal": 1
+								}
+							},
+							{
+								"source": {
+									"name": "Name",
+									"type": "String"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 2
+								}
+							},
+							{
+								"source": {
+									"name": "ProductNumber",
+									"type": "String"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 3
+								}
+							},
+							{
+								"source": {
+									"name": "Color",
+									"type": "String"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 4
+								}
+							},
+							{
+								"source": {
+									"name": "StandardCost",
+									"type": "Decimal"
+								},
+								"sink": {
+									"type": "Decimal",
+									"ordinal": 5
+								}
+							},
+							{
+								"source": {
+									"name": "ListPrice",
+									"type": "Decimal"
+								},
+								"sink": {
+									"type": "Decimal",
+									"ordinal": 6
+								}
+							},
+							{
+								"source": {
+									"name": "Size",
+									"type": "String"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 7
+								}
+							},
+							{
+								"source": {
+									"name": "Weight",
+									"type": "Decimal"
+								},
+								"sink": {
+									"type": "Decimal",
+									"ordinal": 8
+								}
+							},
+							{
+								"source": {
+									"name": "ProductCategoryID",
+									"type": "Int32"
+								},
+								"sink": {
+									"type": "Int32",
+									"ordinal": 9
+								}
+							},
+							{
+								"source": {
+									"name": "ProductModelID",
+									"type": "Int32"
+								},
+								"sink": {
+									"type": "Int32",
+									"ordinal": 10
+								}
+							},
+							{
+								"source": {
+									"name": "SellStartDate",
+									"type": "DateTime"
+								},
+								"sink": {
+									"type": "DateTime",
+									"ordinal": 11
+								}
+							},
+							{
+								"source": {
+									"name": "SellEndDate",
+									"type": "DateTime"
+								},
+								"sink": {
+									"type": "DateTime",
+									"ordinal": 12
+								}
+							},
+							{
+								"source": {
+									"name": "DiscontinuedDate",
+									"type": "DateTime"
+								},
+								"sink": {
+									"type": "DateTime",
+									"ordinal": 13
+								}
+							},
+							{
+								"source": {
+									"name": "ThumbNailPhoto",
+									"type": "Byte[]"
+								},
+								"sink": {
+									"type": "Byte[]",
+									"ordinal": 14
+								}
+							},
+							{
+								"source": {
+									"name": "ThumbnailPhotoFileName",
+									"type": "String"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 15
+								}
+							},
+							{
+								"source": {
+									"name": "rowguid",
+									"type": "Guid"
+								},
+								"sink": {
+									"type": "Guid",
+									"ordinal": 16
+								}
+							},
+							{
+								"source": {
+									"name": "ModifiedDate",
+									"type": "DateTime"
+								},
+								"sink": {
+									"type": "DateTime",
+									"ordinal": 17
+								}
+							}
+						]
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "sqltableproduct_dataset",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "adlsfolder_dataset",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"annotations": []
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

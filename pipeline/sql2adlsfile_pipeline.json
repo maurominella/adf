@@ -1,5 +1,5 @@
 {
-	"name": "sql2adlsfile_pipeline3",
+	"name": "sql2adlsfile_pipeline",
 	"properties": {
 		"activities": [
 			{
